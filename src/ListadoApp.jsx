@@ -16,27 +16,38 @@ export const ListadoApp=()=>{
         SetArreglo([...arreglo,{nombre:'nuevo',visto:false}])
     }
     let listadoSecciones=[
-        {nombre:"Instalación", visto:true},
-        {nombre:"Vite", visto:true},
-        {nombre:"Componente", visto:true},
-        {nombre:"Variables", visto:true},
-        {nombre:"Props", visto:true},
-        {nombre:"Eventos", visto:true},
-        {nombre:"useState", visto:true},
-        {nombre:"Redux", visto:false},
-        {nombre:"customHooks", visto:false},
+        {id:1,nombre:"Instalación", visto:true},
+        {id:2,nombre:"Vite", visto:true},
+        {id:3,nombre:"Componente", visto:true},
+        {id:4,nombre:"Variables", visto:true},
+        {id:5,nombre:"Props", visto:true},
+        {id:6,nombre:"Eventos", visto:true},
+        {id:7,nombre:"useState", visto:true},
+        {id:8,nombre:"Redux", visto:false},
+        {id:9,nombre:"customHooks", visto:false},
 
     ]
     const [arreglo,SetArreglo] = useState(listadoSecciones)
    
-    return (
+
+    /*Manejo de eventos desde el padre, para no delegar al hijo la gestión de las variables */
+    const onAgregarTarea=(val)=>{
+        if(val<1) return
+        const envio={
+            id:arreglo.length+1,
+            nombre:val,
+            visto:false
+        }
+        SetArreglo([...arreglo,envio])
+        }
+            return (
         <>
         <h1>Listado de temas</h1>
         <ol>
-            {arreglo.map(item=><Items key={item.nombre} nombre={item.nombre} visto={item.visto}></Items>)}            
+            {arreglo.map(item=><Items key={item.id} nombre={item.nombre} visto={item.visto}></Items>)}            
         </ol>
         
-        <AgregarTarea agregarTarea={SetArreglo}></AgregarTarea>
+        <AgregarTarea agregarTarea={onAgregarTarea }></AgregarTarea>
         {/* <button onClick={()=>addTask()}>Agregar Tarea</button> */}
         </>
     )

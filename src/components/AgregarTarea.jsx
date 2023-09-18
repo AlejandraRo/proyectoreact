@@ -6,9 +6,14 @@ export const AgregarTarea=({agregarTarea})=>{
         setInputValue(event.target.value)
     }
     const onSubmit=(event)=>{
-        const envio={nombre:inputValue,visto:false}
+        // const envio={nombre:inputValue,visto:false}
+        // event.preventDefault()
+        //  agregarTarea(tareas=>[...tareas,envio])
+
+        //================manejo del padre
         event.preventDefault()
-        agregarTarea(tareas=>[...tareas,envio])
+        agregarTarea(inputValue)
+      
         
     }
     return (
