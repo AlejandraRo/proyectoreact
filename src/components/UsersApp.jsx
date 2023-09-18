@@ -3,11 +3,11 @@ import { UserList } from './UserList'
 
 export const UsersApp = () => {
 
-   const [endPoint,setendPoint] = useState('users')
+   const [endPoint,setEndPoint] = useState('users')
     const handleFetch=()=>
     {
         // fetchUsers()
-        setendPoint('comments')
+        setEndPoint('comments')
     }
     // useEffect(()=>{
     //     fetchUsers()
